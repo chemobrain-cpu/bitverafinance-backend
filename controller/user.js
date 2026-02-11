@@ -73,10 +73,11 @@ module.exports.signup = async (req, res, next) => {
          return next(error)
       }
 
-
+//https://bitverafinance-frontend.onrender.com
       //returning front-end code to seperately verify email
       let verifyUrl = `https://bitverafinance-frontend.onrender.com/verification/${accessToken}`
   
+
 
       try {
          const response = await resend.emails.send({
