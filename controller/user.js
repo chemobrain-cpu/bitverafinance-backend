@@ -78,7 +78,6 @@ module.exports.signup = async (req, res, next) => {
       let verifyUrl = `https://bitverafinance-frontend.onrender.com/verification/${accessToken}`
   
 
-
       try {
          const response = await resend.emails.send({
             from: 'bitverafinance@bitverafinance.com', // must be verified in Resend
