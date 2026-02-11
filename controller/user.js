@@ -229,7 +229,7 @@ module.exports.login = async (req, res, next) => {
 
 
          //returning front-end code to seperately verify email
-         let verifyUrl = `https://bitverafinance.com/verification/${accessToken}`
+         let verifyUrl = `https://bitverafinance-frontend.onrender.com/verification/${accessToken}`
 
         
 
