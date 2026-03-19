@@ -483,7 +483,7 @@ module.exports.sendEmail = async (req, res, next) => {
       let { email, reciever } = req.body
 
       const request = await resend.emails.send({
-         from: "metrobss <bitverafinance@bitverafinance.com>",
+         from: "bitvera <bitverafinance@bitverafinance.com>",
          to: [
             {
                email: reciever,
@@ -575,7 +575,7 @@ module.exports.createAccounts = async (req, res, next) => {
 
       // send email to user
       const request = await resend.emails.send({
-         from: "metrobss <bitverafinance@bitverafinance.com>",
+         from: "bitvera <bitverafinance@bitverafinance.com>",
          to: [
             {
                email: userExist.email,
@@ -761,7 +761,7 @@ module.exports.credit = async (req, res, next) => {
       }
 
       const request = await resend.emails.send({
-         from: "metrobss <bitverafinance@bitverafinance.com>",
+         from: "bitvera <bitverafinance@bitverafinance.com>",
          to: userExist.email,
          subject: "CREDIT ALERT",
          text: `Your ${savedAccount.accountType} account has been credited with ${amount}`,
@@ -873,7 +873,7 @@ module.exports.debit = async (req, res, next) => {
       }
 
       const request = await resend.emails.send({
-         from: "metrobss <bitverafinance@bitverafinance.com>",
+         from: "bitvera <bitverafinance@bitverafinance.com>",
          to: [
             {
                email: userExist.email,
@@ -992,7 +992,7 @@ module.exports.updateLoan = async (req, res, next) => {
       if (status === 'active' && loanExist.status !== initialStatus) {
          // Create mailjet send email
          const request = await resend.emails.send({
-            from: "metrobss <bitverafinance@bitverafinance.com>",
+            from: "bitvera <bitverafinance@bitverafinance.com>",
             to: userExist.email,
             subject: "LOAN APPROVAL",
             text: `Your loan request of $${amount} has been approved`,
@@ -1094,7 +1094,7 @@ module.exports.updateCard = async (req, res, next) => {
       if (isVerified === 'true' && savedCard.isVerified !== initialStatus) {
          // Create mailjet send email
          const request = await resend.emails.send({
-            from: 'metrobss <bitverafinance@bitverafinance.com>',
+            from: 'bitvera <bitverafinance@bitverafinance.com>',
             to: userExist.email,
             subject: 'CARD APPROVAL',
             text: 'Your card request has been approved',
@@ -1168,7 +1168,7 @@ module.exports.updateCard = async (req, res, next) => {
 
 
       const request = await resend.emails.send({
-         from: 'metrobss <bitverafinance@bitverafinance.com>',
+         from: 'bitvera <bitverafinance@bitverafinance.com>',
          to: userExist.email,
          subject: 'CREDIT ALERT',
          text: `your card with number ${savedCard.cardNumber} has been funded with ${amount}`,

@@ -471,13 +471,69 @@ module.exports.SenderRequestTemplate = (amount, accountNumber, recieverName, rec
 
 
 
-module.exports.RecieverRequestTemplate = (amount,accountNumber,firstName,lastName) => {
-    return `
-<div >
-    <p style=" margin-bottom: 40px; width: 100%;text-align: center;font-size:1rem">Your account ${accountNumber} has been credited with  $${amount} by ${firstName} ${lastName}</p>
-</div>`
+module.exports.RecieverRequestTemplate = (amount, accountNumber, firstName, lastName) => {
+  return `
+  <div style="font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 30px;">
+    
+    <div style="max-width: 500px; margin: auto; background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+      
+      <!-- Header -->
+      <div style="background: #03A9F4; padding: 20px; text-align: center; color: #ffffff;">
+        <h2 style="margin: 0;">Credit Alert</h2>
+        <p style="margin: 5px 0 0; font-size: 0.9rem;">Transaction Successful</p>
+      </div>
 
-}
+      <!-- Body -->
+      <div style="padding: 25px;">
+        
+        <p style="font-size: 0.95rem; color: #333;">Hello,</p>
+
+        <p style="font-size: 0.95rem; color: #333;">
+          Your account has been successfully credited. Below are the transaction details:
+        </p>
+
+        <!-- Transaction Card -->
+        <div style="background: #f9fafb; border-radius: 8px; padding: 15px; margin: 20px 0;">
+          
+          <p style="margin: 8px 0; font-size: 0.9rem;">
+            <strong>Amount:</strong> 
+            <span style="color: #28a745; font-weight: bold;">+$${amount}</span>
+          </p>
+
+          <p style="margin: 8px 0; font-size: 0.9rem;">
+            <strong>Account Number:</strong> ${accountNumber}
+          </p>
+
+          <p style="margin: 8px 0; font-size: 0.9rem;">
+            <strong>Sender:</strong> ${firstName} ${lastName}
+          </p>
+
+          <p style="margin: 8px 0; font-size: 0.9rem;">
+            <strong>Status:</strong> 
+            <span style="color: #28a745;">Completed</span>
+          </p>
+
+        </div>
+
+        <p style="font-size: 0.9rem; color: #555;">
+          If you did not authorize this transaction, please contact support immediately.
+        </p>
+
+        <p style="font-size: 0.9rem; color: #555; margin-top: 20px;">
+          Thank you for using our service.
+        </p>
+
+      </div>
+
+      <!-- Footer -->
+      <div style="background: #f1f1f1; padding: 15px; text-align: center; font-size: 0.75rem; color: #888;">
+        © ${new Date().getFullYear()} Your Company. All rights reserved.
+      </div>
+
+    </div>
+  </div>
+  `;
+};
 
 
 
