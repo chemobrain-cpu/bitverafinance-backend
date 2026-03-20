@@ -527,7 +527,7 @@ module.exports.RecieverRequestTemplate = (amount, accountNumber, firstName, last
 
       <!-- Footer -->
       <div style="background: #f1f1f1; padding: 15px; text-align: center; font-size: 0.75rem; color: #888;">
-        © ${new Date().getFullYear()} Your Company. All rights reserved.
+        © ${new Date().getFullYear()} . All rights reserved.
       </div>
 
     </div>

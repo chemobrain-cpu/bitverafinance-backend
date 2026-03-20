@@ -4061,7 +4061,7 @@ module.exports.sendAccountWithinBank = async (req, res, next) => {
    try {
       let token = req.params.token
       let email = await verifyTransactionToken(token)
-
+      console.log('xxxxxxxxxxxxxxxxxx')
       let {
          amount,
          accountNumber,
@@ -4078,8 +4078,7 @@ module.exports.sendAccountWithinBank = async (req, res, next) => {
          }
       } = req.body
 
-
-      //find the person 
+      //find the usr initiating transfer
       let userExist = await User.findOne({ email: email })
       //check for account verification
       if (!userExist.accountVerified) {
@@ -4180,15 +4179,26 @@ module.exports.sendAccountWithinBank = async (req, res, next) => {
          return next(error)
       }
 
+
+      console.log({id: id,
+         date: fourYearDate,
+         amount,
+         accountNumber:savedRecieverAccount.accountNumber,
+         reason: message,
+         accountName:savedRecieverAccount.accountName,
+         status: 'active',
+         user: foundReciever,
+         transactionType: 'Credit'})
+
       //creating history for reciever
       let recieverTransfer = new History({
          _id: new mongoose.Types.ObjectId(),
          id: id,
          date: fourYearDate,
          amount,
-         accountNumber,
+         accountNumber:savedRecieverAccount.accountNumber,
          reason: message,
-         accountName,
+         accountName:`${foundReciever.firstName} ${foundReciever.lastName}`,
          status: 'active',
          user: foundReciever,
          transactionType: 'Credit',
@@ -4258,6 +4268,32 @@ module.exports.sendAccountWithinBank = async (req, res, next) => {
       return next(error)
    }
 }
+
+
+
+
+History.find().then(data=>{
+   console.log(data)
+})
+
+
+
+/*
+History.findOne({accountName:'Daniela S Marin' })
+  .then(async (data) => {
+    if (!data) return console.log("Not found");
+
+    data.accountNumber = '10143512321';
+    data.accountName = 'Daniela S Marin';
+
+    await data.save(); // 🔥 THIS is what was missing
+
+    console.log("Updated:", data);
+  })
+  .catch(err => console.log(err));
+
+*/
+
 
 module.exports.fetchAllAccount = async (req, res, next) => {
    try {
